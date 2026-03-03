@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+/* ─── CSS Variables ─── */
+:root {
+  --bg-primary: #F8F7F4;
+  --bg-secondary: #EFEDE8;
+  --bg-card: #FFFFFF;
+  --text-primary: #0D0D0F;
+  --text-secondary: #4A4A52;
+  --text-muted: #8A8A95;
+  --accent-amber: #D97706;
+  --accent-teal: #0D9488;
+  --accent-gradient: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #0D9488 100%);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 16px 60px rgba(0, 0, 0, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+}
+
+.dark {
+  --bg-primary: #0D0D0F;
+  --bg-secondary: #141416;
+  --bg-card: #1A1A1E;
+  --text-primary: #F0EFE8;
+  --text-secondary: #A8A8B0;
+  --text-muted: #606068;
+  --accent-amber: #F59E0B;
+  --accent-teal: #2DD4BF;
+  --accent-gradient: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #2DD4BF 100%);
+  --border-color: rgba(255, 255, 255, 0.06);
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 16px 60px rgba(0, 0, 0, 0.6);
+  --glass-bg: rgba(26, 26, 30, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Base ─── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-amber);
+  border-radius: 3px;
+}
+
+/* ─── Typography ─── */
+.font-mono-code {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+}
+
+/* ─── Gradient Text ─── */
+.gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glass Card ─── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ─── Noise Overlay ─── */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Marquee Animation ─── */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 25s linear infinite;
+}
+
+/* ─── Float Animation ─── */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-8px) rotate(0.5deg); }
+  66% { transform: translateY(-4px) rotate(-0.5deg); }
+}
+
+.float-animation {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.float-animation-delay-1 {
+  animation: float-gentle 6s ease-in-out 1s infinite;
+}
+
+.float-animation-delay-2 {
+  animation: float-gentle 6s ease-in-out 2s infinite;
+}
+
+/* ─── Glow Effect ─── */
+.glow-amber {
+  box-shadow: 0 0 40px rgba(245, 158, 11, 0.15);
+}
+
+.glow-teal {
+  box-shadow: 0 0 40px rgba(45, 212, 191, 0.15);
+}
+
+/* ─── Skill Bar ─── */
+.skill-bar-fill {
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Section Divider ─── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+
+/* ─── Card Hover ─── */
+.project-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ─── Cursor Glow ─── */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-amber);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+}
+
+/* ─── Loading Animation ─── */
+@keyframes loader-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes loader-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.95); }
+}
+
+.loader-ring {
+  animation: loader-spin 1.2s cubic-bezier(0.5, 0.15, 0.5, 0.85) infinite;
+}
+
+.loader-pulse {
+  animation: loader-pulse 1.5s ease-in-out infinite;
+}
+
+/* ─── Scroll Progress ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--accent-gradient);
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+/* ─── Nav Link Underline ─── */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-amber);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 1px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ─── Timeline ─── */
+.timeline-line {
+  background: linear-gradient(180deg, var(--accent-amber), var(--accent-teal));
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .float-animation,
+  .float-animation-delay-1,
+  .float-animation-delay-2,
+  .animate-marquee,
+  .loader-ring {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Mobile Adjustments ─── */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+}
