@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: 'Raj Sarkar | Full Stack Developer',
   description: 'Portfolio of Raj Sarkar - MERN Stack Developer',
   icons: {
-    icon: [{ url: '/assets/images/Raj_sarkar.jpg', type: 'image/png' }],
+    icon: [{ url: '/assets/images/brief.png', type: 'image/png' }],
   },
 };
 

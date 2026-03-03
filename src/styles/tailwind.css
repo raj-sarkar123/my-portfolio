@@ -18,7 +18,14 @@
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.5);
 }
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
 
+.animate-blink {
+  animation: blink 1s infinite;
+}
 .dark {
   --bg-primary: #0D0D0F;
   --bg-secondary: #141416;

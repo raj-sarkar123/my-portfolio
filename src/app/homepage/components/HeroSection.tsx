@@ -3,6 +3,7 @@
 import { motion, Variants } from 'framer-motion';
 
 import AppImage from '@/src/components/ui/AppImage';
+import { useEffect, useState } from "react";
 
 // Floating stat card component
 const FloatingCard = ({
@@ -27,6 +28,38 @@ ${floatClass} ${className}`}
     {children}
   </motion.div>
 );
+function useTyping(words: string[], typingSpeed = 80, deletingSpeed = 40, pause = 1500) {
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[index];
+    let timeout: NodeJS.Timeout;
+
+    if (!isDeleting && text.length < currentWord.length) {
+      timeout = setTimeout(() => {
+        setText(currentWord.slice(0, text.length + 1));
+      }, typingSpeed);
+    } 
+    else if (!isDeleting && text.length === currentWord.length) {
+      timeout = setTimeout(() => setIsDeleting(true), pause);
+    } 
+    else if (isDeleting && text.length > 0) {
+      timeout = setTimeout(() => {
+        setText(currentWord.slice(0, text.length - 1));
+      }, deletingSpeed);
+    } 
+    else if (isDeleting && text.length === 0) {
+      setIsDeleting(false);
+      setIndex((prev) => (prev + 1) % words.length);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, index, words, typingSpeed, deletingSpeed, pause]);
+
+  return text;
+}
 
 // Social icon button
 const SocialLink = ({
@@ -56,6 +89,8 @@ const SocialLink = ({
 
 // Hero Section — Split-tone dark hero with floating cards
 const HeroSection = () => {
+  const roles = ["Full Stack Developer", "MERN Stack", "Problem Solver"];
+const typedText = useTyping(roles);
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -160,21 +195,22 @@ const HeroSection = () => {
             </motion.h1>
 
             {/* Title */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
-              {['Full Stack Developer', 'MERN Stack', 'Problem Solver'].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 rounded-full text-sm font-medium font-mono"
-                  style={{
-                    background: 'var(--bg-secondary)',
-                    color: 'var(--text-secondary)',
-                    border: '1px solid var(--border-color)',
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </motion.div>
+           <motion.div
+  variants={itemVariants}
+  className="h-10 flex items-center"
+>
+  <span
+    className="px-4 py-1 rounded-full text-sm font-medium font-mono"
+    style={{
+      background: 'var(--bg-secondary)',
+      color: 'var(--text-secondary)',
+      border: '1px solid var(--border-color)',
+    }}
+  >
+    {typedText}
+    <span className="ml-1 animate-blink">|</span>
+  </span>
+</motion.div>
 
             {/* Intro */}
             <motion.p
