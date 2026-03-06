@@ -49,7 +49,7 @@ const projects: Project[] = [
     id: "hand-gesture",
     title: "Hand Gesture Control",
     description:
-      "Real-time hand gesture recognition system that controls desktop applications using only a webcam — no hardware required.",
+      "Real-time hand gesture recognition system that controls volume using only a webcam — no hardware required.",
     longDesc:
       "Uses OpenCV for video capture and MediaPipe for 21-point hand landmark detection. Maps gesture patterns to system controls — volume, brightness, mouse cursor movement — with 94% recognition accuracy.",
     tech: ["Python", "OpenCV", "MediaPipe", "NumPy", "PyAutoGUI"],
@@ -297,7 +297,10 @@ const ProjectsSection = () => {
             }}
           >
             Things I&apos;ve{" "}
-            <span className="gradient-text">built</span>
+            <span style={{
+                  color: 'var(--accent-amber)',
+                  textShadow: '0 0 20px rgba(245,158,11,0.3)',
+                }}>built</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}

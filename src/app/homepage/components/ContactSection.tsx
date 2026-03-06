@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
- import emailjs from "@emailjs/browser";
+import emailjs from '@emailjs/browser';
 
 interface FormState {
   name: string;
@@ -30,34 +30,31 @@ const ContactSection = () => {
 
   // Mock form submission — connect to backend/email service here
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
 
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
 
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      alert('Something went wrong!');
+    }
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  try {
-    await emailjs.send(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-      {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message,
-      },
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-    );
-
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
-  } catch (error) {
-    console.error("EmailJS Error:", error);
-    alert("Something went wrong!");
-  }
-
-  setIsSubmitting(false);
-};
+    setIsSubmitting(false);
+  };
 
   const inputStyle = (field: string) => ({
     background: 'var(--bg-secondary)',
@@ -100,9 +97,9 @@ const handleSubmit = async (e: React.FormEvent) => {
     },
     {
       name: 'Email',
-      href :'https://mail.google.com/mail/?view=cm&fs=1&to=rayansingh067@gmail.com',
-      target : '_blank',
-      rel : 'noopener noreferrer',
+      href: 'https://mail.google.com/mail/?view=cm&fs=1&to=rayansingh067@gmail.com',
+      target: '_blank',
+      rel: 'noopener noreferrer',
       icon: (
         <svg
           width="20"
@@ -162,7 +159,15 @@ const handleSubmit = async (e: React.FormEvent) => {
                 color: 'var(--text-primary)',
               }}
             >
-              Let&apos;s work <span className="gradient-text">together.</span>
+              Let&apos;s work{' '}
+              <span
+                style={{
+                  color: 'var(--accent-amber)',
+                  textShadow: '0 0 20px rgba(245,158,11,0.3)',
+                }}
+              >
+                together.
+              </span>
             </h2>
             <p className="text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
               I&apos;m actively looking for internship opportunities, freelance projects, and
@@ -360,21 +365,26 @@ const handleSubmit = async (e: React.FormEvent) => {
                   ) : (
                     <>
                       Send Message
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                        />
-                      </svg>
+                    <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+  strokeWidth={2.5}
+>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    d="M22 2L11 13"
+  />
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    d="M22 2L15 22l-4-9-9-4 20-7z"
+  />
+</svg>
                     </>
                   )}
                 </button>

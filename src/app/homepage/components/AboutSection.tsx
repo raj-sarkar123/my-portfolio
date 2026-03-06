@@ -123,7 +123,10 @@ const itemVariants: Variants = {
               }}
             >
               Building the web,{" "}
-              <span className="gradient-text">one commit at a time.</span>
+              <span style={{
+                  color: 'var(--accent-amber)',
+                  textShadow: '0 0 20px rgba(245,158,11,0.3)',
+                }} >one commit at a time.</span>
             </motion.h2>
 
             <motion.p
@@ -132,7 +135,7 @@ const itemVariants: Variants = {
               style={{ color: "var(--text-secondary)" }}
             >
               I&apos;m Raj Sarkar, a third-year B.Tech Computer Science student at
-              a university in Kolkata. I&apos;m deeply passionate about full-stack
+              Brainware University, Kolkata. I&apos;m deeply passionate about full-stack
               web development and enjoy turning complex problems into simple,
               elegant solutions.
             </motion.p>

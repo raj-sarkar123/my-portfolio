@@ -199,9 +199,16 @@ body {
   top: 0;
   left: 0;
   height: 3px;
-  background: var(--accent-gradient);
-  z-index: 100;
-  transition: width 0.1s linear;
+  z-index: 60;
+
+  background: var(--accent-amber);
+
+  box-shadow:
+    0 0 6px rgba(245, 158, 11, 0.6),
+    0 0 12px rgba(245, 158, 11, 0.5),
+    0 0 20px rgba(245, 158, 11, 0.4);
+
+  transition: width 0.15s ease;
 }
 
 /* ─── Nav Link Underline ─── */

@@ -57,7 +57,7 @@ const activities = [
   {
     icon: '🏆',
     title: 'Competitive Programming',
-    desc: 'Active on LeetCode — 200+ problems solved',
+    desc: 'Active on LeetCode — 100+ problems solved',
   },
   { icon: '🌐', title: 'Open Source', desc: 'Contributing to GitHub projects & documentation' },
   { icon: '📚', title: 'Self Learning', desc: 'Udemy Full Stack, CS50x, Machine Learning courses' },
@@ -103,17 +103,20 @@ const EducationSection = () => {
             color: 'var(--text-primary)',
           }}
         >
-          Academic <span className="gradient-text">Journey</span>
+          Academic <span style={{
+                  color: 'var(--accent-amber)',
+                  textShadow: '0 0 20px rgba(245,158,11,0.3)',
+                }}>Journey</span>
         </motion.h2>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left: Timeline */}
           <div className="relative">
             {/* Vertical line */}
-            <div
-              className="absolute left-4 top-2 bottom-2 w-0.5 timeline-line rounded-full"
-              style={{ opacity: 0.3 }}
-            />
+           <div
+  className="absolute left-2 top-0 bottom-0 w-[2px] -translate-x-1/2 timeline-line rounded-full"
+  style={{ opacity: 0.3 }}
+/>
 
             <div className="flex flex-col gap-10">
               {timelineItems.map((item, i) => (
@@ -126,11 +129,11 @@ const EducationSection = () => {
                     delay: 0.2 + i * 0.15,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="relative pl-12"
+                  className="relative pl-10"
                 >
                   {/* Dot */}
                   <div
-                    className="absolute left-2 top-2 w-4 h-4 rounded-full -translate-x-1/2 border-2 transition-colors"
+                    className="absolute left-2 top-3 w-4 h-4 rounded-full -translate-x-1/2 border-2 transition-colors"
                     style={{
                       background:
                         item.status === 'current' ? 'var(--accent-amber)' : 'var(--bg-card)',
