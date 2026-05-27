@@ -38,7 +38,7 @@ const projects: Project[] = [
     "Developed a full-stack web application that automatically extracts, processes, and aggregates event data from multiple online sources using scheduled scraping jobs.",
   longDesc:
     "Designed and implemented a scalable event data extraction system using Python-based web scraping techniques. Integrated automated cron jobs for periodic data collection, implemented data cleaning and structuring pipelines, and stored processed event information in a database for efficient retrieval. Built a responsive frontend interface to display aggregated event listings with filtering and search functionality.",
-  tech: ["Python", "Cheerio", "Axios", "Cron Jobs", "MongoDB", "REST API"],
+  tech: ["Python", "Cheerio", "Axios", "Cron Jobs", "Supabase", "REST API"],
   github: "https://github.com/raj-sarkar123/Event-Scraping-Application", // update if different
   demo: "https://unrivaled-rabanadas-885a9c.netlify.app/",
   emoji: "📅",
@@ -46,19 +46,19 @@ const projects: Project[] = [
   category: "Web Scraping",
 },
   {
-    id: "hand-gesture",
-    title: "Hand Gesture Control",
-    description:
-      "Real-time hand gesture recognition system that controls volume using only a webcam — no hardware required.",
-    longDesc:
-      "Uses OpenCV for video capture and MediaPipe for 21-point hand landmark detection. Maps gesture patterns to system controls — volume, brightness, mouse cursor movement — with 94% recognition accuracy.",
-    tech: ["Python", "OpenCV", "MediaPipe", "NumPy", "PyAutoGUI"],
-    github: "https://github.com/rajsarkar/hand-gesture-control",
-    demo: null,
-    emoji: "🖐️",
-    color: "#A78BFA",
-    category: "Computer Vision",
-  },
+  id: "nutriscan-ai",
+  title: "NutriScan AI",
+  description:
+    "AI-powered nutrition assistant that scans foods and restaurant menus to deliver personalized health insights instantly.",
+  longDesc:
+    "Built an intelligent nutrition platform that analyzes food items from images, menus, and manual entries to provide calorie tracking, nutrient breakdowns, and personalized dietary recommendations. Features include restaurant menu scanning, daily nutrition tracking, downloadable health reports, and AI-based food suggestions tailored to user preferences and fitness goals.",
+  tech: ["React", "Node.js", "Express", "Supabase", "AI APIs","JWT", "Tailwind CSS"],
+  github: "https://github.com/raj-sarkar123/nutrition-recommendation-",
+  demo: "https://nutrition-recommendation.vercel.app/login",
+  emoji: "🥗",
+  color: "#A78BFA",
+  category: "AI & Health Tech",
+},
   {
   id: "handwritten-digit-recognition",
   title: "Handwritten Digit Recognition using Convolutional Neural Networks (CNNs)",

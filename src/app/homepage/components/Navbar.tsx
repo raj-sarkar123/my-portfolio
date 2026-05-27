@@ -10,6 +10,7 @@ interface NavbarProps {
 }
 
 const NAV_LINKS = [
+  { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
@@ -21,22 +22,27 @@ const NAV_LINKS = [
 const Navbar = ({ isDark, onToggleTheme }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+  setIsScrolled(window.scrollY > 20);
 
-      // Determine active section
-      const sections = NAV_LINKS.map((l) => l.href.replace("#", ""));
-      for (const section of sections.reverse()) {
-        const el = document.getElementById(section);
-        if (el && window.scrollY >= el.offsetTop - 100) {
-          setActiveSection(section);
-          break;
-        }
-      }
-    };
+  // ✅ If near the top, always highlight Home
+  if (window.scrollY < 100) {
+    setActiveSection("hero");
+    return;
+  }
+
+  const sections = NAV_LINKS.map((l) => l.href.replace("#", ""));
+  for (const section of [...sections].reverse()) {
+    const el = document.getElementById(section);
+    if (el && window.scrollY >= el.offsetTop - 100) {
+      setActiveSection(section);
+      break;
+    }
+  }
+};
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);

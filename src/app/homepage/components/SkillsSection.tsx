@@ -18,7 +18,7 @@ const skills: Skill[] = [
   { name: 'Express.js', icon: 'EX', level: 78, category: 'Backend', color: '#000000' },
   { name: 'MongoDB', icon: '🍃', level: 76, category: 'Database', color: '#47A248' },
   { name: 'Python', icon: '🐍', level: 82, category: 'Language', color: '#3776AB' },
-  { name: 'SQL', icon: '🗄', level: 70, category: 'Database', color: '#F29111' },
+  { name: 'Supabase', icon: '🟩', level: 70, category: 'Database', color: '#F29111' },
   { name: 'Git & GitHub', icon: '🔀', level: 85, category: 'Tools', color: '#F05032' },
 ];
 
