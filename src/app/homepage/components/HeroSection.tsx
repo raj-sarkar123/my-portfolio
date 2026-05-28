@@ -160,7 +160,7 @@ const typedText = useTyping(roles);
                   color: 'var(--accent-amber)',
                 }}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                
                 Available for opportunities
               </span>
             </motion.div>
