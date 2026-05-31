@@ -97,7 +97,7 @@ const ContactSection = () => {
     },
     {
       name: 'Email',
-      href: 'https://mail.google.com/mail/?view=cm&fs=1&to=rayansingh067@gmail.com',
+      href: 'https://mail.google.com/mail/?view=cm&fs=1&to=rajsarkar.developer@gmail.com',
       target: '_blank',
       rel: 'noopener noreferrer',
       icon: (
@@ -178,7 +178,7 @@ const ContactSection = () => {
             {/* Contact info */}
             <div className="flex flex-col gap-4">
               <a
-                href="mailto:rayansingh067@gmail.com"
+                href="mailto:rajsarkar.developer@gmail.com"
                 className="flex items-center gap-3 text-sm font-medium transition-colors duration-200 hover:opacity-80 group"
                 style={{ color: 'var(--text-primary)' }}
               >
@@ -191,7 +191,7 @@ const ContactSection = () => {
                 >
                   📧
                 </span>
-                <span>rayansingh067@gmail.com</span>
+                <span>rajsarkar.developer@gmail.com</span>
               </a>
               <div
                 className="flex items-center gap-3 text-sm font-medium"
