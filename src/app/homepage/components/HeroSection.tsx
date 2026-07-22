@@ -366,7 +366,11 @@ const typedText = useTyping(roles);
                 boxShadow: '0 0 60px rgba(245,158,11,0.2), 0 0 120px rgba(245,158,11,0.1)',
               }}
             >
-              <img src="/raj.png" alt="Raj Sarkar" className="object-cover object-[center_40%]" />
+             <img
+  src="/raj1.png"
+  alt="Raj Sarkar"
+  className="w-full h-full object-cover object-[center_20%]"
+/>
 
               {/* Overlay gradient */}
               <div
